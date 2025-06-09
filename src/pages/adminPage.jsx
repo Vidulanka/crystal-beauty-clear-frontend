@@ -2,6 +2,9 @@ import { Link, Route, Routes } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
 import { MdWarehouse } from "react-icons/md";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
+import AdminProductsPage from "./admin/product";
+import AddProductForm from "./admin/addProductform";
+
 
 
 
@@ -18,8 +21,9 @@ export default function AdminPage() {
             < div className="h-full bg-white w-[calc(100vw-300px)] rounded-lg">
              <Routes path="/*">
                 <Route path ="/users" element={<h1>Users</h1>}/>
-                <Route path ="/products" element={<h1>Products</h1>}/>
+                <Route path ="/products" element={ <AdminProductsPage/>}/>
                 <Route path ="/orders" element={<h1>Orders</h1>}/>
+                <Route path= "addProduct" element={<h1>{<AddProductForm/>}</h1>}/>
             </Routes>
             </div>
 
