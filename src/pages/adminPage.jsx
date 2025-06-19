@@ -4,6 +4,7 @@ import { MdWarehouse } from "react-icons/md";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
 import AdminProductsPage from "./admin/product";
 import AddProductForm from "./admin/addProductform";
+import EditProductForm from "./admin/editProoduct";
 
 
 
@@ -24,6 +25,7 @@ export default function AdminPage() {
                 <Route path ="/products" element={ <AdminProductsPage/>}/>
                 <Route path ="/orders" element={<h1>Orders</h1>}/>
                 <Route path= "addProduct" element={<h1>{<AddProductForm/>}</h1>}/>
+                <Route path= "/editProduct" element={<EditProductForm/>}/>
             </Routes>
             </div>
 
