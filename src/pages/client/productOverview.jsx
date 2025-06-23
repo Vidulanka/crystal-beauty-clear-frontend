@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import ImageSlider from "../../components/imageSlider";
 import getCart, { addToCart } from "../../utils/cart";
@@ -13,6 +13,7 @@ export default function ProductOverview() {
      }
     const[product,setProduct]=useState(null)
     const[status,setStatus]=useState("loading")
+    const navigate= useNavigate();
    useEffect(
        () => {
         console.log((import.meta.env.VITE_BACKEND_URL+"/api/product/"+params.id))
@@ -71,7 +72,31 @@ export default function ProductOverview() {
                     {product.description}
                  </p>
                  <div className="w-full flex justify-center mb-[40px]">
-                    <button className="bg-pink-800 border cursor-pointer border-pink-800 text-white w-[200px] h-[50px] rounded-lg hover:bg-white hover:text-pink-800 text-2xl">Buy Now</button>
+                    <button
+                        onClick={
+
+                            () => {
+                                navigate("/checkout",{
+                                    state :{
+                                        items:[
+                                              {
+                                                   productID:product.productID,
+                                                   name:product.name,
+                                                   altNames:product.altNames,
+                                                   price:product.price,
+                                                   lebeledPrice:product.lebeledPrice,
+                                                    images:product.images[0],
+                                                    quantity:1
+            
+                                                }
+                                        ]
+                                    }
+
+
+                                } )
+                               
+                            } }
+                     className="bg-pink-800 border cursor-pointer border-pink-800 text-white w-[200px] h-[50px] rounded-lg hover:bg-white hover:text-pink-800 text-2xl">Buy Now</button>
                     <button className="bg-pink-800  border cursor-pointer border-pink-800 text-white w-[200px] h-[50px] rounded-lg hover:bg-white hover:text-pink-800 text-2xl ml-[20px]"
                     
                     onClick={() => {

@@ -26,7 +26,7 @@ export function addToCart(product,qty){
                 price:product.price,
                 lebeledPrice:product.lebeledPrice,
                 images:product.images[0],
-                quantity:qty
+                quantity:qty,
             
             }
         )
@@ -50,4 +50,34 @@ export function removeFromCart(productID){
     cart = cart.filter((product)=>product.productID !== productID);
     localStorage.setItem("cart",JSON.stringify(cart));
     return cart
+}
+
+export function getTotal(){
+    let cart = getCart();
+    let total = 0;
+     cart.forEach((product)=>{
+        total += product.price * product.quantity
+     })
+    return total
+
+
+
+
+
+
+}
+
+export function getTotalForLabelledPrice(){
+    let cart = getCart();
+    let total = 0;
+     cart.forEach((product)=>{
+        total += product.lebeledPrice * product.quantity
+     })
+    return total
+
+
+
+
+
+
 }
