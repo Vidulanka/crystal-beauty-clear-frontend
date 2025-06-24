@@ -5,6 +5,7 @@ import { LiaFileInvoiceSolid } from "react-icons/lia";
 import AdminProductsPage from "./admin/product";
 import AddProductForm from "./admin/addProductform";
 import EditProductForm from "./admin/editProoduct";
+import AdminOrdersPage from "./admin/adminOrders";
 
 
 
@@ -23,7 +24,7 @@ export default function AdminPage() {
              <Routes path="/*">
                 <Route path ="/users" element={<h1>Users</h1>}/>
                 <Route path ="/products" element={ <AdminProductsPage/>}/>
-                <Route path ="/orders" element={<h1>Orders</h1>}/>
+               <Route path ="/orders" element={<AdminOrdersPage/>}/>
                 <Route path= "addProduct" element={<h1>{<AddProductForm/>}</h1>}/>
                 <Route path= "/editProduct" element={<EditProductForm/>}/>
             </Routes>
