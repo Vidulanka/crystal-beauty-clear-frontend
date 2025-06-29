@@ -96,113 +96,125 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="w-full h-full flex justify-center p-[40px]">
-      <div className="w-[700px]">
+    <div className="min-h-screen bg-pink-50 flex justify-center p-6">
+      <div className="w-full max-w-4xl space-y-6">
+        {/* Cart Items */}
         {cart.map((item, index) => (
           <div
             key={item.productID}
-            className="w-full h-[100px] bg-white shadow-2xl my-[5px] flex justify-between items-center relative"
+            className="bg-white rounded-lg shadow-lg flex flex-col lg:flex-row items-center p-4 relative"
           >
+            {/* Remove Button */}
             <button
-              className="absolute right-[-50px] bg-red-500 w-[40px] h-[40px] rounded-full text-white flex justify-center items-center shadow cursor-pointer"
               onClick={() => removeItem(item.productID)}
               title="Remove"
+              className="absolute top-4 right-4 lg:right-[-50px] bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition"
+              aria-label={`Remove ${item.name} from cart`}
             >
-              <TbTrash />
+              <TbTrash size={20} />
             </button>
 
+            {/* Product Image */}
             <img
               src={item.images}
-              className="h-full aspect-square object-cover"
               alt={item.name}
+              className="h-28 w-28 object-cover rounded-md mb-4 lg:mb-0 lg:mr-6 flex-shrink-0"
             />
-            <div className="h-full max-w-[300px] w-[300px] overflow-hidden">
-              <h1 className="text-xl font-bold">{item.name}</h1>
-              <h2 className="text-lg text-gray-500">
+
+            {/* Product Info */}
+            <div className="flex flex-col max-w-xs w-full overflow-hidden">
+              <h1 className="text-2xl font-semibold text-pink-700 truncate">
+                {item.name}
+              </h1>
+              <h2 className="text-gray-500 text-sm mt-1 truncate">
                 {item.altNames?.join(" | ")}
               </h2>
-              <h2 className="text-lg text-gray-500">
+              <h2 className="text-gray-700 font-medium mt-2">
                 LKR: {item.price.toFixed(2)}
               </h2>
             </div>
-            <div className="h-full w-[100px] flex justify-center items-center">
+
+            {/* Quantity Controls */}
+            <div className="flex items-center justify-center mt-4 lg:mt-0 lg:mx-8">
               <button
-                className="text-2xl w-[30px] h-[30px] bg-black text-white rounded-full flex justify-center items-center cursor-pointer mx-[5px]"
                 onClick={() => changeQuantity(index, -1)}
+                aria-label={`Decrease quantity of ${item.name}`}
+                className="bg-pink-600 hover:bg-pink-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold shadow-md transition"
               >
                 -
               </button>
-              <h1 className="text-xl font-bold">{item.quantity}</h1>
+              <span className="mx-4 text-xl font-semibold min-w-[30px] text-center">
+                {item.quantity}
+              </span>
               <button
-                className="text-2xl w-[30px] h-[30px] bg-black text-white rounded-full flex justify-center items-center cursor-pointer mx-[5px]"
                 onClick={() => changeQuantity(index, 1)}
+                aria-label={`Increase quantity of ${item.name}`}
+                className="bg-pink-600 hover:bg-pink-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold shadow-md transition"
               >
                 +
               </button>
             </div>
-            <div className="h-full w-[100px] flex justify-center items-center">
-              <h1 className="text-xl w-full text-end pr-2">
-                {(item.price * item.quantity).toFixed(2)}
-              </h1>
+
+            {/* Item Total */}
+            <div className="ml-auto mt-4 lg:mt-0 w-24 text-right text-xl font-semibold text-pink-700">
+              LKR {(item.price * item.quantity).toFixed(2)}
             </div>
           </div>
         ))}
 
-        <div className="w-full bg-white flex justify-end">
-          <h1 className="w-[100px] text-xl text-end pr-2">Total</h1>
-          <h1 className="w-[100px] text-xl text-end pr-2">
-            {getTotalForLabelledPrice().toFixed(2)}
-          </h1>
-        </div>
+        {/* Totals Section */}
+        <div className="bg-white rounded-lg shadow-lg p-6 max-w-md ml-auto space-y-4">
+          <div className="flex justify-between text-lg font-semibold text-gray-700">
+            <span>Total</span>
+            <span>{getTotalForLabelledPrice().toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between text-lg font-semibold text-pink-600 border-b border-gray-300 pb-2">
+            <span>Discount</span>
+            <span>{(getTotalForLabelledPrice() - getTotal()).toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between text-xl font-bold text-pink-700 border-t-4 border-double border-pink-400 pt-3">
+            <span>Net Total</span>
+            <span>{getTotal().toFixed(2)}</span>
+          </div>
 
-        <div className="w-full bg-white flex justify-end">
-          <h1 className="w-[100px] text-xl text-end pr-2">Discount</h1>
-          <h1 className="w-[100px] text-xl border-b-[2px] text-end pr-2">
-            {(getTotalForLabelledPrice() - getTotal()).toFixed(2)}
-          </h1>
-        </div>
+          {/* User Details Form */}
+          <div className="space-y-4 mt-6">
+            <div className="flex items-center justify-between">
+              <label className="w-[100px] text-lg font-semibold text-gray-700">Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name"
+                className="w-[calc(100%-110px)] border-b-2 border-pink-400 text-lg p-1 focus:outline-none focus:border-pink-600 rounded"
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <label className="w-[100px] text-lg font-semibold text-gray-700">Address</label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Your address"
+                className="w-[calc(100%-110px)] border-b-2 border-pink-400 text-lg p-1 focus:outline-none focus:border-pink-600 rounded"
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <label className="w-[100px] text-lg font-semibold text-gray-700">Phone</label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Your phone"
+                className="w-[calc(100%-110px)] border-b-2 border-pink-400 text-lg p-1 focus:outline-none focus:border-pink-600 rounded"
+              />
+            </div>
+          </div>
 
-        <div className="w-full bg-white flex justify-end">
-          <h1 className="w-[100px] text-xl text-end pr-2">Net Total</h1>
-          <h1 className="w-[100px] text-xl text-end pr-2 border-double border-b-[4px]">
-            {getTotal().toFixed(2)}
-          </h1>
-        </div>
-
-        <div className="w-full bg-white flex justify-end">
-          <h1 className="w-[100px] text-xl text-end pr-2">Name</h1>
-          <input
-            className="w-[200px] text-xl border-b-[2px] text-end pr-2"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your name"
-          />
-        </div>
-
-        <div className="w-full bg-white flex justify-end">
-          <h1 className="w-[100px] text-xl text-end pr-2">Address</h1>
-          <input
-            className="w-[200px] text-xl border-b-[2px] text-end pr-2"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Your address"
-          />
-        </div>
-
-        <div className="w-full bg-white flex justify-end">
-          <h1 className="w-[100px] text-xl text-end pr-2">Phone</h1>
-          <input
-            className="w-[200px] text-xl border-b-[2px] text-end pr-2"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Your phone"
-          />
-        </div>
-
-        <div className="w-full bg-white flex justify-end mt-4">
+          {/* Place Order Button */}
           <button
-            className="w-[170px] text-xl text-center shadow pr-2 bg-pink-400 text-white h-[40px] rounded-lg cursor-pointer"
             onClick={placeOrder}
+            className="w-full bg-pink-600 hover:bg-pink-700 text-white text-xl font-semibold rounded-lg py-3 shadow-md transition"
           >
             Place Order
           </button>

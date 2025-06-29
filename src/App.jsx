@@ -34,4 +34,3 @@ function App() {
 }
 
 export default App;
-//965270288185-k2hhgd4m59sk07ut1g4trgdn4g0e4dqm.apps.googleusercontent.com

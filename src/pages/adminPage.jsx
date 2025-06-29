@@ -10,6 +10,9 @@ import { useEffect, useState } from "react";
 import Loader from "../components/loader";
 import axios from "axios";
 import toast from "react-hot-toast";
+import ContactMessages from "./admin/contactMessages";
+import { LuMessageSquareMore } from "react-icons/lu";
+
 
 
 
@@ -60,13 +63,17 @@ export default function AdminPage() {
             <Link to="/admin/users" className=" p-2  flex  items-center"><FaUsers className="mr-2" /> Users</Link>                                                                                                                                                                                                                            
                 <Link to="/admin/products" className="p-2  flex  items-center"><MdWarehouse className="mr-2"/>Product</Link>
                 <Link to="/admin/orders" className="p-2  flex  items-center"><LiaFileInvoiceSolid className="mr-2" />Orders</Link>
+                <Link to="/admin/contact" className="p-2  flex  items-center"> <LuMessageSquareMore className="mr-2" /> Messages</Link>
                
             </div>
             < div className="h-full bg-white w-[calc(100vw-300px)] rounded-lg">
              <Routes path="/*">
                 <Route path ="/users" element={<h1>Users</h1>}/>
+                <Route path="/admin/*" element={<AdminPage />} />
+
                 <Route path ="/products" element={ <AdminProductsPage/>}/>
                <Route path ="/orders" element={<AdminOrdersPage/>}/>
+               <Route path ="/contact" element={<ContactMessages/>}/>
                 <Route path= "addProduct" element={<h1>{<AddProductForm/>}</h1>}/>
                 <Route path= "/editProduct" element={<EditProductForm/>}/>
             </Routes>

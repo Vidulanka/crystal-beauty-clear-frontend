@@ -59,7 +59,7 @@ export default function AdminProductsPage () {
    
 
     return (
-        <div className="w-full h-full rounded-lg relative">
+        <div className="w-full h-full  rounded-lg relative">
 
             <Link to={"/admin/addProduct"} className="text-white absolute bg-gray-700 p-[12px] text-3xl rounded-full cursor-pointer hover:bg-gray-300 hover:text-gray-700 right-5 bottom-5">
                 <AiOutlinePlus />

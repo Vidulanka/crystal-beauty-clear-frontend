@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+
+
 @theme {
-    --color-primary: #FFF3C7;
-    --color-secondary: #FEC7B4;
-    --color-accent: #F7418F;
+    --color-primary: bg-pink-100;
+    --color-secondary: bg-pink-200;
+    --color-tertiary: bg-pink-300;
+    --color-accent: text-pink-600, hover:text-pink-800;
 }
