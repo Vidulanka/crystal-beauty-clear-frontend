@@ -99,9 +99,9 @@ export default function Home() {
       <div className="relative h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div 
-            className="bg-cover bg-center w-full h-full" 
+            className="bg-cover bg-center w-full h-full  bg-[url(/home-bg.jpg)] " 
             style={{ 
-              backgroundImage: "url('https://images.unsplash.com/photo-1522338242992-e1a54906a8da?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')",
+             
               transform: `translateY(${window.scrollY * 0.3}px)`,
               transition: "transform 0.1s ease-out"
             }}
