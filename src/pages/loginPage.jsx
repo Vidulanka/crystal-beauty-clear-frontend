@@ -94,7 +94,7 @@ export default function LoginPage() {
             <div className="mt-8 flex justify-center">
               <div className="w-32 h-1 bg-white bg-opacity-50 rounded-full"></div>
             </div>
-            <p className="mt-8 text-pink-100 italic">
+            <p className="mt-8 text-pink-300 font-semibold italic">
               "Your skin deserves the crystal clear treatment"
             </p>
           </div>
