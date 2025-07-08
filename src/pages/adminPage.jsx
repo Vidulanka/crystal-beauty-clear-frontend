@@ -4,7 +4,7 @@ import { MdWarehouse } from "react-icons/md";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
 import { LuMessageSquareMore } from "react-icons/lu";
 import AdminProductsPage from "./admin/product";
-import AddProductForm from "./admin/addProductform";
+import AddProductForm from "./admin/addProductForm"
 import EditProductForm from "./admin/editProoduct";
 import AdminOrdersPage from "./admin/adminOrders";
 import { useEffect, useState } from "react";
