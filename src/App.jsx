@@ -8,6 +8,7 @@ import RegisterPage from './pages/client/register';
 import HomePage from './pages/homePage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import ResponsiveTesting from './pages/test';
+import ForgetPassword from './pages/client/forgetPassword';
 
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/> 
         <Route path="/testing" element={<Testing/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
+        <Route path ="/forget" element={<ForgetPassword/>}/>
         <Route path="/r" element={<ResponsiveTesting/>}/>
         <Route path="/*" element={<HomePage/>}/>
        

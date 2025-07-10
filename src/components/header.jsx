@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BsCart4 } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import UserData from "./userData";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,17 +43,13 @@ export default function Header() {
         >
           Reviews
         </Link>
+
+        <div className="absolute right-[70px] h-full">
+          <UserData />
+          </div>
       </nav>
 
-      {/* Cart icon always visible on right */}
-      <Link
-        to="/cart"
-        className="absolute right-6 text-pink-700 text-3xl hover:text-pink-900 transition focus:outline-none focus:ring-2 focus:ring-pink-500 rounded"
-        aria-label="Cart"
-        tabIndex={0}
-      >
-        <BsCart4 />
-      </Link>
+     
 
       {/* Mobile menu overlay */}
       {isOpen && (

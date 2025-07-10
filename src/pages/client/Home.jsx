@@ -82,7 +82,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
       {/* Floating Cart Button */}
-      <div className={`fixed right-6 z-50 transition-all duration-500 ${isScrolled ? "top-24" : "top-6"}`}>
+      <div className={`fixed right-2 z-50 transition-all duration-500 ${isScrolled ? "top-24" : "top-3"} `}>
         <Link 
           to="/cart"
           className="bg-pink-600 text-white p-4 rounded-full shadow-lg hover:bg-pink-700 transition-all hover:scale-105 flex items-center justify-center"

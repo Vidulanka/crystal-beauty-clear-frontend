@@ -170,7 +170,7 @@ export default function LoginPage() {
                 Remember me
               </label>
             </div>
-            <Link to="/forgot-password" className="text-sm text-pink-600 hover:text-pink-800 hover:underline">
+            <Link to="/forget" className="text-sm text-pink-600 hover:text-pink-800 hover:underline">
               Forgot password?
             </Link>
           </div>
@@ -232,9 +232,10 @@ export default function LoginPage() {
         </div>
         
         {/* Footer */}
-        <div className="absolute bottom-4 left-0 right-0 text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} Crystal Beauty Clear. All rights reserved.
-        </div>
+       <div className="absolute bottom-0 left-0 right-0 px-4 text-center text-xs text-gray-500 select-none sm:bottom-10 sm:text-sm">
+            © {new Date().getFullYear()} Crystal Beauty Clear. All rights reserved.
+      </div>
+
       </div>
     </div>
   );
